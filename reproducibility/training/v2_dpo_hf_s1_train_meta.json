@@ -1,0 +1,58 @@
+{
+  "data": {
+    "model": "qwen3-1.7b-instruct",
+    "init_ref": "checkpoints/v2_sft_hf_s1/merged-final",
+    "n_pairs": 3997,
+    "pair_types": {
+      "harmful_safety_preference": 1997,
+      "harmless_compliance": 919,
+      "general_helpfulness": 1081
+    },
+    "beta": 0.2,
+    "max_steps": 500,
+    "save_steps": 83,
+    "checkpoints": [
+      "checkpoint-166",
+      "checkpoint-249",
+      "checkpoint-332",
+      "checkpoint-415",
+      "checkpoint-498",
+      "checkpoint-500",
+      "checkpoint-83"
+    ],
+    "lr": 5e-06,
+    "eff_batch": 16,
+    "wandb": {
+      "enabled": true
+    },
+    "resumed_from_checkpoint": null,
+    "wall_minutes": 46.8,
+    "peak_vram_gb": 12.2
+  },
+  "_meta": {
+    "generated_by": "scripts-dpo/dpo_train.py",
+    "git_commit": "e4d7391608b14f831202b7658c1c7456758ebb09",
+    "git_dirty": true,
+    "python": "3.13.13",
+    "package_versions": {
+      "torch": "2.11.0+cu128",
+      "transformers": "5.12.1",
+      "trl": "1.6.0",
+      "peft": "0.19.1",
+      "bitsandbytes": "0.49.2",
+      "accelerate": "1.14.0",
+      "numpy": "2.5.0",
+      "scipy": "1.18.0",
+      "scikit-learn": "1.9.0",
+      "statsmodels": "0.14.6",
+      "matplotlib": "3.11.0",
+      "seaborn": "0.13.2",
+      "datasets": "5.0.0",
+      "datasketch": "1.10.0",
+      "pandas": "3.0.3"
+    },
+    "seed": 1,
+    "data_path": "data/train/v2_hf/dpo.jsonl",
+    "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+  }
+}

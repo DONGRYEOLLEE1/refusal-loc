@@ -1,0 +1,25 @@
+
+model:
+  key: qwen3-1.7b-instruct
+  local_path: ${REFUSALLOC_MODEL_PATH}
+  chat_template_sha256: a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8
+
+enable_thinking: false
+
+system_prompt: ""
+
+decoding:
+  do_sample: false
+  temperature: null
+  top_p: null
+  top_k: null
+  max_new_tokens: 512
+
+
+seed:
+  eval: 0
+
+notes: >
+  Step 0(inspect_model.py)에서 실측 확정: chat_template sha 일치, non-thinking은 think 태그 없음,
+  thinking은 <think> 생성. baseline sanity harmful refusal=1.00/harmless=0.00.
+  정식 4축 채점은 behavioral-eval 스킬(벤치 분류기 우선, judge는 configs/judge_config.yaml로 별도 동결).

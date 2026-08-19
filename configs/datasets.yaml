@@ -1,0 +1,96 @@
+seed_data: 20260623
+english_only: true
+
+hf_datasets:
+  - hf_id: PKU-Alignment/BeaverTails
+    revision: 8401fe609d28
+    license: CC-BY-NC-4.0
+  - hf_id: PKU-Alignment/PKU-SafeRLHF
+    revision: 9421ffafec3f
+    license: CC-BY-NC-4.0
+  - hf_id: bench-llm/or-bench
+    revision: e36d8b80e818
+    license: CC-BY-4.0
+  - hf_id: databricks/databricks-dolly-15k
+    revision: bdd27f4d94b9
+    license: CC-BY-SA-3.0
+  - hf_id: openai/gsm8k
+    revision: 740312add88f
+    license: MIT
+  - hf_id: google/IFEval
+    revision: 966cd89545d6
+    license: Apache-2.0
+  - hf_id: cais/mmlu
+    revision: c30699e8356d
+    license: MIT
+  - hf_id: JailbreakBench/JBB-Behaviors
+    revision: 886acc352a31
+    license: MIT
+
+github_benches:
+  - name: advbench
+    repo: llm-attacks/llm-attacks
+    revision: 098262edf85f
+    license: MIT
+  - name: harmbench
+    repo: centerforaisafety/HarmBench
+    revision: 8e1604d1171f
+    license: MIT
+  - name: strongreject
+    repo: alexandrasouly/strongreject
+    revision: f7cad6c17e62
+    license: MIT
+  - name: xstest
+    repo: paul-rottger/xstest
+    revision: d7bb5bd738c1
+    license: CC-BY-4.0
+
+splits:
+  bench_advbench:
+    count: 520
+    source: "AdvBench harmful_behaviors.csv (held-out safety)"
+  bench_gsm8k:
+    count: 1319
+    source: "GSM8K test (capability, fixed 250 subset flagged)"
+  bench_harmbench:
+    count: 400
+    source: "HarmBench behaviors_text_all.csv (held-out safety)"
+  bench_ifeval:
+    count: 541
+    source: "IFEval (capability)"
+  bench_jbb:
+    count: 100
+    source: "JailbreakBench JBB-Behaviors harmful (held-out safety)"
+  bench_mmlu:
+    count: 14042
+    source: "MMLU test (capability, fixed ~150 stratified subset flagged)"
+  bench_orbench_eval:
+    count: 1315
+    source: "OR-Bench-hard eval slice + or-bench-toxic (over-refusal)"
+  bench_strongreject:
+    count: 313
+    source: "StrongREJECT dataset.csv (held-out safety)"
+  bench_xstest:
+    count: 450
+    source: "XSTest prompts.csv (over-refusal)"
+  dpo_pref:
+    count: 609
+    source: "PKU-SafeRLHF(type1/type3-dualsafe) + Dolly+template(type2) + OR-Bench-hard(type3 needs_gen)"
+  dpo_pref_harmfulonly:
+    count: 305
+    source: "PKU-SafeRLHF type1 only (baseline contrast)"
+  mech_extract_train:
+    count: 512
+    source: "BeaverTails harmful-refused vs Dolly harmless-complied (D_refusal/D_harm)"
+  mech_extract_val:
+    count: 512
+    source: "BeaverTails vs Dolly (prompt-disjoint from train)"
+  sft_train:
+    count: 1072
+    source: "BeaverTails(harmful-refused) + Dolly(harmless)"
+
+leakage_audit_pass: true
+license_posture: >
+  BeaverTails/PKU-SafeRLHF = CC-BY-NC-4.0 (research-only, no commercial release).
+  Dolly = CC-BY-SA-3.0 (ShareAlike on derived). OR-Bench/XSTest = CC-BY-4.0.
+  Recommendation: release build scripts + prompt-hash lists + revisions, NOT derived data.

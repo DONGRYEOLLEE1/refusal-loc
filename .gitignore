@@ -1,0 +1,22 @@
+# Raw data and model artifacts
+data/
+datasets/
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Per-example generations and runtime outputs
+artifacts/step02/behavior_*.json
+eval-results/
+workspace/
+wandb/
+
+# Local environments and credentials
+.venv/
+.env
+.env.*
+**/*secret*
+**/*token*
+**/*api_key*

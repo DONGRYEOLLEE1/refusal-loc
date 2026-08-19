@@ -1,0 +1,109 @@
+schema_version: 1
+seed_data: 20260623
+created_at_utc: '2026-08-14T09:51:09Z'
+datasets:
+  allenai/tulu-3-sft-mixture:
+    revision: b14afda60f1bbebe55d5d2fa1e4df5042f97f8be
+    license: ODC-BY-1.0; subset licenses vary
+  PKU-Alignment/PKU-SafeRLHF:
+    revision: 9421ffafec3fa40a1f1a7d567b4d525079477ecb
+    license: CC-BY-NC-4.0
+  allenai/coconot:
+    revision: 2cbe16aabf9069f17e48c8daad8aeabc29469eb7
+    license: ODC-BY-1.0; downstream terms apply
+  nvidia/HelpSteer2:
+    revision: 990b2711a36180dd19d9c94b8627844866f8982a
+    license: CC-BY-4.0
+wildjailbreak:
+  access: official decontaminated 50K source embedded in Tulu 3 SFT mixture
+  direct_gated_dataset_used: false
+  source: ai2-adapt-dev/tulu_v3.9_wildjailbreak_decontaminated_50k
+  arm_label: conservative lexical split of released target response
+  locally_generated_responses: 0
+  templates_used: 0
+counts:
+  sft:
+    general: 24000
+    harmful_refusal: 8000
+    harmless_compliance: 8000
+  sft_categories:
+    general_dialog: 9600
+    wildjailbreak: 16000
+    math: 7200
+    coding: 2880
+    ifdata: 1440
+    science_misc: 2880
+  dpo:
+    harmful_safety_preference: 2000
+    harmless_compliance: 919
+    general_helpfulness: 1081
+  dpo_sources:
+    PKU-Alignment/PKU-SafeRLHF: 2000
+    allenai/coconot-pref: 919
+    nvidia/HelpSteer2-preference: 1081
+  pku_chosen_lexical_refusal: 243
+token_lengths:
+  sft:
+    mean: 382.78
+    p50: 345
+    p90: 758
+    p95: 893
+    max: 1024
+  dpo:
+    mean: 286.65
+    p50: 187
+    p90: 591
+    p95: 750
+    max: 1020
+filter_stats:
+  sft:
+    over_1024_removed: 9886
+    exact_or_internal_removed: 1578
+    fuzzy_removed: 1
+  dpo:
+    exact_or_internal_removed: 224
+    fuzzy_removed: 4
+    over_1024_removed: 113
+tulu_scan:
+  source_counts:
+    ai2-adapt-dev/oasst1_converted: 7131
+    ai2-adapt-dev/flan_v2_converted: 89982
+    ai2-adapt-dev/tulu_hard_coded_repeated_10: 240
+    ai2-adapt-dev/no_robots_converted: 9500
+    ai2-adapt-dev/tulu_v3.9_wildchat_100k: 100000
+    ai2-adapt-dev/personahub_math_v5_regen_149960: 149960
+    allenai/tulu-3-sft-personas-math-grade: 49980
+    ai2-adapt-dev/tulu_v3.9_open_math_2_gsm8k_50k: 50000
+    ai2-adapt-dev/numinamath_tir_math_decontaminated: 64312
+    ai2-adapt-dev/tulu_v3.9_personahub_math_interm_algebra_20k: 20000
+    ai2-adapt-dev/personahub_code_v2_34999: 34999
+    ai2-adapt-dev/evol_codealpaca_heval_decontaminated: 107276
+    ai2-adapt-dev/personahub_ifdata_manual_seed_v3_29980: 29980
+    ai2-adapt-dev/coconot_converted: 10983
+    ai2-adapt-dev/tulu_v3.9_wildjailbreak_decontaminated_50k: 50000
+    ai2-adapt-dev/tulu_v3.9_synthetic_finalresp_wildguardmixtrain_decontaminated_50k: 50000
+    ai2-adapt-dev/tulu_v3.9_sciriff_10k: 10000
+    ai2-adapt-dev/tulu_v3.9_table_gpt_5k: 5000
+    ai2-adapt-dev/tulu_v3.9_aya_100k: 100000
+  general_seen:
+    general_dialog: 120152
+    math: 284168
+    coding: 142144
+    ifdata: 29773
+    science_misc: 12524
+  wildjailbreak_style_seen:
+    compliance: 30605
+    refusal: 19386
+audit:
+  sft_dpo_prompt_overlap: 0
+  sft_reserved_exact_overlap: 0
+  dpo_reserved_exact_overlap: 0
+  pass: true
+files:
+  sft:
+    path: data/train/v2_hf/sft.jsonl
+    sha256: 92322c0f1e0796100661b784dab4e84256309e3247172d31ff155d0fa2e60cd8
+  dpo:
+    path: data/train/v2_hf/dpo.jsonl
+    sha256: 8e57eb0d1d97c2892c7ccdc11549faae01db6302ffa99bf5df3ef351ca39f2fa
+build_minutes: 7.07
