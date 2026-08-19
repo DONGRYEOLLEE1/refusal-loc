@@ -15,6 +15,7 @@ wandb/
 
 # Local environments and credentials
 .venv/
+__pycache__/
 .env
 .env.*
 **/*secret*
